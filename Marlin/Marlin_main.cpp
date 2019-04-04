@@ -4198,6 +4198,9 @@ inline void gcode_G4() {
  *  Z   Home to the Z endstop
  *
  */
+
+inline void gcode_G29();
+ 
 inline void gcode_G28(const bool always_home_all) {
 
   #if ENABLED(DEBUG_LEVELING_FEATURE)
@@ -4434,6 +4437,7 @@ inline void gcode_G28(const bool always_home_all) {
   #if ENABLED(DEBUG_LEVELING_FEATURE)
     if (DEBUGGING(LEVELING)) SERIAL_ECHOLNPGM("<<< G28");
   #endif
+  gcode_G29(); // FORCE G29 after each G28
 } // G28
 
 void home_all_axes() { gcode_G28(true); }
